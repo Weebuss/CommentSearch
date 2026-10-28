@@ -1,71 +1,34 @@
-# commentsearch README
+# CommentSearch
 
-This is the README for your extension "commentsearch". After writing up a brief description, we recommend including the following sections.
+Плагин для **Visual Studio Code**, который находит маркеры `TODO` и `BUG` в активном документе и позволяет перейти к выбранной строке.
 
-## Features
+**Автор:** 558910, группа M3115.  
+Лабораторная работа №3 по дисциплине «Инструментальные средства разработки ПО».
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## Возможности
 
-For example if there is an image subfolder under your extension project workspace:
+- Поиск TODO и BUG без учёта регистра; двоеточие после маркера необязательно.
+- Список результатов с типом маркера, номером строки и описанием.
+- Переход в начало выбранной строки через Quick Pick.
+- Уведомления при отсутствии открытого редактора или совпадений.
 
-\!\[feature X\]\(images/feature-x.png\)
+Поиск выполняется во всём тексте активного документа, включая несохранённые изменения. На каждой строке находится только первый маркер. Синтаксис комментариев не анализируется.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Запуск
 
-## Requirements
+Нужны Node.js, npm и VS Code, совместимый с диапазоном `^1.140.0` из `package.json`.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+```bash
+git clone https://github.com/Weebuss/CommentSearch.git
+cd CommentSearch
+npm ci
+npm run compile
+```
 
-## Extension Settings
+Откройте проект в VS Code и нажмите F5, выбрав **Run Extension**. В новом окне откройте файл, вызовите **Search Comments** через палитру команд (Ctrl+Shift+P) и выберите результат.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Например, для строки `// TODO: добавить проверку` в списке появятся тип TODO, номер строки и описание «добавить проверку».
 
-For example:
+## Документация
 
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+[Техническое задание, архитектура и функции](docs/DOCUMENTATION.md).

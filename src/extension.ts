@@ -1,15 +1,20 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
+/** Тип маркера. */
 type MarkerType = 'TODO' | 'BUG'
 
+/** Найденный маркер с индексом строки с нуля и описанием. */
 interface Marker {
 	type: MarkerType;
 	line: number;
 	description: string;
 }
 
+/**
+ * Находит первый TODO или BUG в каждой строке документа.
+ * @param document Документ для поиска.
+ * @returns Массив найденных маркеров.
+ */
 function findMarkers(document: vscode.TextDocument): Marker[] {
 	const markers: Marker[] = [];
 
@@ -31,8 +36,10 @@ function findMarkers(document: vscode.TextDocument): Marker[] {
 	return markers.sort();
 }
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+/**
+ * Регистрирует команду поиска и перехода к выбранному маркеру.
+ * @param context Контекст расширения для хранения регистрации команды.
+ */
 export function activate(context: vscode.ExtensionContext) {
 	const disposable1 = vscode.commands.registerCommand('commentsearch.Search', async () => {
 		const editor = vscode.window.activeTextEditor;
@@ -79,5 +86,5 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable1);
 }
 
-// This method is called when your extension is deactivated
+/** Завершение работы; регистрацию команды освобождает VS Code. */
 export function deactivate() {}
